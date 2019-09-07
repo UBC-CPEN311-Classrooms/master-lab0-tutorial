@@ -99,7 +99,7 @@ contains our circuit description. The test-bench is not necessary for hardware i
 <p align="center"><img src="figures/quartus-add-files.png" width="75%" height="75%"></p>
 
 The subsequent menu will ask you to select the FPGA device that the project is
-compiling the hardware for. Different FPGAs have different ways of implementing circuit logic, and different numbers of pins so make sure you select the right model. Make sure you choose the Cyclone V SE Mainstream (`5CSEMA5F31C6`) for your DE1-SoC and the Cyclone V E Base (`5CEBA4F23C7`) if you have a DE0-CV.
+compiling the hardware for. Different FPGAs have different ways of implementing circuit logic, and different numbers of pins so make sure you select the right model. Make sure you choose the Cyclone V SE Mainstream (`5CSEMA5F31C6`) for your DE1-SoC and the Cyclone V E Base (`5CEBA4F23C7`) if you have a DE0-CV. Alternatively, you can select the Board tab instead of Device, and then choose the DE1-SoC or DE0-CV as needed.
 
 <p align="center"><img src="figures/quartus-select-device.png" width="75%" height="75%"></p>
 
