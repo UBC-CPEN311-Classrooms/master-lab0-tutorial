@@ -23,6 +23,8 @@ You can choose from either Windows or Linux versions of the software. If you hav
 
 You should install [Quartus Prime Lite](http://dl.altera.com/?edition=lite) (it's free). You will want version **17.1.1**, which means that you need to first install 17.1 and then install update 17.1.1.593. Make sure your download includes the ModelSim simulator and support for the Cyclone V FPGA device that is the heart of your DE1-SoC board, and that that you select all of these during installation.
 
+You should also install the [University Program extensions](https://www.intel.com/content/www/us/en/programmable/support/training/university/materials-software.html?&ifup_version=17.1) for this version of Quartus.
+
 If you have problems installing the software, please contact your TA in the first week of Lab 1.  
 
 
