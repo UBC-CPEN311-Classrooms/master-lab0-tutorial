@@ -1,3 +1,5 @@
+`timescale 1 ps / 1 ps
+
 module tb_adder();
     reg [7:0] TB_SW;
     wire [3:0] TB_LEDR;
