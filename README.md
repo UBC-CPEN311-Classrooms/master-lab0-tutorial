@@ -43,7 +43,7 @@ If you have problems installing the software, please contact your TA during the 
 
 In this section, we will look at how to simulate a hardware design using ModelSim.
 
-Find the `adder.sv` and `tb_adder.sv` files from this repository; these files describe a very simple combinational adder and a testbench for it. The circuit inputs are two sets of sliding switches on the board, and that the output is a set of red LEDs. Switches 0 to 3 are used to describe the 4-bit binary value that is added to switches 4 to 7, and the 4-bit binary output will be shown on the red LEDs 0 to 3. The `tb_adder.sv` testbench will virtually stimulate the inputs of the adder design (`adder.sv`, often known as the _design under test_ or _DUT_) in order to fully exercise its behaviour.
+Find the `adder.sv` and `tb_adder.sv` files from this repository; these files describe a very simple combinational adder and a testbench for it. The circuit inputs are two sets of sliding switches on the board, and the output is a set of red LEDs. Switches 0 to 3 are used to describe the 4-bit binary value that is added to switches 4 to 7, and the 4-bit binary output will be shown on the red LEDs 0 to 3. The `tb_adder.sv` testbench will virtually stimulate the inputs of the adder design (`adder.sv`, often known as the _design under test_ or _DUT_) in order to fully exercise its behaviour.
 
 First, start up ModelSim and select _File&rarr;New&rarr;Project_. Choose whatever project name and location you like, but leave the other settings as shown below:
 
