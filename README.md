@@ -97,7 +97,7 @@ To save your simulated waveforms for a report, select the waveform window by cli
 
 ## Synthesis with Quartus Prime
 
-Now that you have fully simulated your design and are (fairly) confident that it works, it is now time to compile it into real hardware to be implemented on our FPGA.
+Now that you have fully simulated your design and are (fairly) confident that it works, it is time to compile it into real hardware to be implemented on our FPGA.
 
 Start up Quartus, and choose _New Project Wizard_. Click _Next_ to advance on to the second page, and you should end up here:
 
