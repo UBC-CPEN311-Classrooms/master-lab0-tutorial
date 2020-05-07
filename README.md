@@ -140,7 +140,7 @@ If your Verilog contains errors, you can double-click on `adder` in the top-left
 
 <p align="center"><img src="figures/quartus-edit-verilog.png" width="60%" height="60%"></p>
 
-You may notice that even in an successful compilation, a number of info and warnings messages are still generated. Some of those messages are actually quite important, but aren't strictly errors (e.g., any “inferring latches” messages almost always indicate that you are writing unsynthesizable Verilog). Over time and with experience you will come to learn which ones to look out for and what they mean.
+You may notice that even in an successful compilation, a number of info and warnings messages are still generated. Some of those messages are actually quite important, but aren't strictly errors (e.g., any “inferring latches” messages almost always indicate that you are describing some unintended behaviour in your Verilog). Over time and with experience you will come to learn which ones to look out for and what they mean.
 
 Here's a handy checklist for Quartus-related problems:
 
