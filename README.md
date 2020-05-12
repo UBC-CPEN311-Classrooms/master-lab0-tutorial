@@ -1,5 +1,5 @@
 # Tutorial: Quartus and ModelSim
-by Eddie Hung with Mieszko Lis, Guy Lemieux, and Steve Wilton
+by Eddie Hung with Mieszko Lis, Cristian Grecu, Guy Lemieux, and Steve Wilton
 
 
 ## Table of contents
