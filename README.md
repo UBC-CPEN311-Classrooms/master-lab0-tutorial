@@ -10,6 +10,7 @@ by Eddie Hung with Mieszko Lis, Cristian Grecu, Guy Lemieux, and Steve Wilton
 * [Synthesis with Quartus Prime](#synthesis-with-quartus-prime)
 * [Programming the FPGA](#programming-the-fpga)
 * [Post\-synthesis simulation](#post-synthesis-simulation)
+* [GitHub submissions and autograding](#github-submissions-and-autograding)
 * [Conclusion](#conclusion)
 
 
@@ -33,10 +34,19 @@ We will be using another industry-standard tool, Intel Quartus Prime, to synthes
 You can choose from either Windows or Linux versions of the software. If you have a Mac, you can run will either Windows or Linux inside VirtualBox or a similar virtual machine environment.
 
 You should install [Quartus Prime Lite](https://fpgasoftware.intel.com/19.1/?edition=lite) (it's free). You will want version **19.1**. Make sure your download includes the ModelSim simulator and support for the Cyclone V FPGA device that is the heart of your DE1-SoC / DE0-CV board, and that that you select all of these during installation.
+The easy thing is to download the full 6GB file -- you'll need about 14GB of disk space available because another 8GB or more is needed to unpack/install/decompress during the installation.
 
-You should also install the [University Program extensions](https://www.intel.com/content/www/us/en/programmable/support/training/university/materials-software.html?&ifup_version=18.1) for this version of Quartus.
+If you need to save space, things get much more complicated. There is an "Individual Files" tab. Make sure that your download includes Quartus Prime (1.8GB), ModelSim (1GB) and support for the Cyclone V FPGA device (1.3GB). You don't need to compile for other FPGA devices. Note that the installation and setup of ModelSim might not go very smoothly using this method, so I strongly advise you to use the full install method if at all possible.
 
-If you have problems installing the software, please contact your TA during the first week of class.
+Optional: go to the "Additional Software" tab to download and install "Quartus
+Prime Help" and "Quartus Prime Programmer and Tools". The programmer is already
+built-in to Quartus, but this allows you to run the programmer as a stand-alone
+tool.
+
+You should also install the [University Program extensions](https://www.intel.com/content/www/us/en/programmable/support/training/university/materials-software.html?&ifup_version=18.1) for this version of Quartus. Ignore the warning of a version mismatch with Quartus Prime.
+(You do not need to download the Linux SD Card image.)
+
+If you have problems installing the software, please contact your TA during your lab session in the first week of class.
 
 
 ## Simulating using ModelSim
@@ -201,15 +211,38 @@ In case you have problems, here's a handy checklist for any Programmer-related p
 
 ## Post-synthesis simulation
 
-Another output of the synthesis process is a description of your design in terms of the primitive elements available on the FPGA: logic array blocks (LABs), I/O buffers, and so on (if you were building an ASIC, the primitive elements would be ASIC library cells). This description is called a _netlist_, and in this case is just a Verilog file that instantiates and connects these primitive elements. You can find it in the `simulation/modelsim` folder, in our case `adder.vo`.
+The synthesis process converts your Verilog design, which is actually written in high-level Verilog, into a very basic low-level format.
+This low-level format will contain very basic logic gates and estimates for the time delays -- the precise format will depend upon the
+target technology. This output is called a post-synthesis netlist, and it can also be described by the Verilog language. As a result,
+the post-synthesis netlist can also be simulated in ModelSim. Simulating this netlist is important, because it contains all of the
+optimizations and transformations made by the synthesis tools, as well as time delays, which allow for detailed timing-oriented
+simulation as well as more accurate power estimation.
 
-In the ASIC flow, simulating the netlist is an important part of the process: nobody _really_ trusts the synthesis tools to be bug-free, and re-spinning a broken ASIC costs upward of a million dollars, so it makes sense to be careful. In a more complex design, the netlist would be annotated with detailed timing information, which allows for the design to be simulated in much more detail and more accurate power estimates to be made.
+For FPGAs, the output is a description of your design in terms of the primitive
+elements available on the FPGA: logic array blocks (LABs), I/O buffers, and so
+on (if you were building an ASIC, the primitive elements would be ASIC library
+cells).  The post-synthesis netlist is just a Verilog file that instantiates
+and connects these primitive elements. You can find it in the
+`simulation/modelsim` folder, in our case `adder.vo`.
 
-In this offering of CPEN 311, some of you might not have a physical FPGA board available, and so might not be able to demonstrate the working circuit on the actual hardware. However, we still need to know that your design synthesizes into working hardware. We will therefore evaluate your design in part by (automatically) synthesizing it in Quartus and simulating the post-synthesis netlist — and you should do the same to ensure that you receive full marks.
+In the ASIC flow, simulating the netlist is an important part of the process: nobody _really_ trusts the synthesis tools to be bug-free, and re-spinning a broken ASIC costs upward of a million dollars, so it makes sense to be careful.
 
-To simulate the netlist, you will follow the same steps to create a simulation project as in the [Simulating](#simulating-using-modelsim) section, except that you will combine the testbench with the netlist (`adder.vo`) instead of your Verilog design (`adder.sv`). Compile the design as before.
+If you do not have a physical FPGA board available, you can use ModelSim to
+simulate how the FPGA would behave by using the post-simulation netlist instead
+of your original design files.  This allows us to determine whether your
+Verilog code was correct, and whether it was correctly synthesized, since the
+synthesis process can sometimes produce different outputs than simulating the
+original code (especially if accidentally you use non-synthesizable Verilog).
+We will therefore evaluate your design in part by (automatically) synthesizing
+it in Quartus and simulating the post-synthesis netlist — and you should do the
+same to ensure that you receive full marks in your labs.
 
-However, we cannot directly simulate the design like we did before: the netlist instantiates primitive FPGA modules like `cyclone_lcell_comb` and `cyclone_io_ibuf`, so the simulation will fail unless we tell Modelsim where to find these modules.
+To simulate the netlist, you will follow the same steps to create a simulation
+project as in the [Simulating](#simulating-using-modelsim) section, except that
+you will combine the testbench with the netlist (`adder.vo`) instead of your
+Verilog design (`adder.sv`). Compile the design as before.
+
+However, we cannot directly simulate the design like we did before: the netlist instantiates primitive FPGA modules like `cyclone_lcell_comb` and `cyclone_io_ibuf`, so the simulation will fail unless we tell ModelSim where to find these modules.
 
 To do this, make sure you've compiled the design, and go to _Simulate&rarr;Start Simulation..._ and select the _Libraries_ tab. In the _Search Libraries (-L)_ box, add the `cyclonev_ver` library, which defines the FPGA primitive cells for your Cyclone V FPGA:
 
@@ -230,9 +263,25 @@ When you simulate, you can also see how the signals in the synthesized design ch
 In a more complicated design, you would see many more additional signals, and most of the internal variables in your SystemVerilog RTL would have been compiled away; only top-level module ports, like `SW` and `LEDR` here, will be preserved. This means that during post-synthesis simulation you cannot reach inside your module to examine or toggle the internal signals, so your post-synthesis testbench can only do “black-box” testing.
 
 
+## GitHub submissions and autograding
+
+The last part of this tutorial is to make sure that you can push your modified
+Verilog to the GitHub repository in preparation for autograding.
+
+In the folder `lab0`, you will find a short Verilog file `lab0.sv`. Edit this
+file, uncomment the code describing the active-low synchronous reset.  Simulate
+the design in ModelSim -- did you find any errors? If so, correct them.
+
+Finally, push your modified file back to GitHub before the lab deadline.
+
+At some point after the deadline, the TA will run the autograder and verify
+whether you modified the file correctly. When complete, the TA will push the
+autograder report back into your GitHub repository.
+
+
 ## Conclusion
 
-That's it for the tutorial! Now you know how to simulate your RTL design in Modelsim, synthesize it using Quartus, program it on your FPGA, and simulate the post-synthesis netlist.
+That's it for the tutorial! Now you know how to simulate your RTL design in ModelSim, synthesize it using Quartus, program it on your FPGA, and simulate the post-synthesis netlist.
 
 Good luck with the rest of the course!
 
