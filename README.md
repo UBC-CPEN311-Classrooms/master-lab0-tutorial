@@ -270,13 +270,17 @@ Verilog to the GitHub repository in preparation for autograding.
 
 In the folder `lab0`, you will find a short Verilog file `lab0.sv`. Edit this
 file, uncomment the code describing the active-low synchronous reset.  Simulate
-the design in ModelSim -- did you find any errors? If so, correct them.
+the design in ModelSim -- did you find any errors? If so, correct them. Be
+careful not to modify the module name or any of the I/O signal names, or
+add/remove any I/O signals.
 
-Finally, push your modified file back to GitHub before the lab deadline.
+Finally, push your modified `lab0.sv` file back to GitHub before the lab
+deadline. You do not need to push any other files.
 
 At some point after the deadline, the TA will run the autograder and verify
 whether you modified the file correctly. When complete, the TA will push the
-autograder report back into your GitHub repository.
+autograder report back into your GitHub repository, and you can see what it
+looks like.
 
 
 ## Conclusion
@@ -290,4 +294,5 @@ Good luck with the rest of the course!
 1.1: 2016-09-06: Jose Pinilla: DE1-SoC and DE0-CV instructions
 1.2: 2017-12-30: Mieszko Lis: GitHub release
 1.3: 2020-05-06: Mieszko Lis: Pandemic edition: netlist simulation instructions
+1.4: 2020-09-13: Guy Lemieux: GitHub submission to test autograder
 -->
