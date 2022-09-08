@@ -52,7 +52,6 @@ If you have problems installing the software, please contact your TA during your
 
 You should also install the [University Program extensions](https://www.intel.com/content/www/us/en/programmable/support/training/university/materials-software.html?&ifup_version=18.1). Install the latest version (at the point of writing that's 18.1, different from the Quartus version) and follow the installation wizard to install under Quartus 19.1.
 
-=======
 Install Cygwin by running [setup-x86_64.exe](https://cygwin.com/setup-x86_64.exe). Follow the installation wizard to install under C:\intelFPGA_lite\19.1\quartus\bin64\cygwin (or the corresponding installation path). Leave all other options as default.
 
 If you have problems installing the software, please contact your TA during the first week of class.
