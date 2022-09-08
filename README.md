@@ -1,9 +1,5 @@
 # Tutorial: Quartus and ModelSim
-<<<<<<< HEAD
 by Eddie Hung with Mieszko Lis, Cristian Grecu, Guy Lemieux, and Steve Wilton
-=======
-by Eddie Hung with Mieszko Lis, Guy Lemieux, Steve Wilton, and Cristian Grecu
->>>>>>> 35bb739131b5a337c1b6535e74000f3ea7f27d7b
 
 
 ## Table of contents
@@ -14,10 +10,7 @@ by Eddie Hung with Mieszko Lis, Guy Lemieux, Steve Wilton, and Cristian Grecu
 * [Synthesis with Quartus Prime](#synthesis-with-quartus-prime)
 * [Programming the FPGA](#programming-the-fpga)
 * [Post\-synthesis simulation](#post-synthesis-simulation)
-<<<<<<< HEAD
 * [GitHub submissions and autograding](#github-submissions-and-autograding)
-=======
->>>>>>> 35bb739131b5a337c1b6535e74000f3ea7f27d7b
 * [Conclusion](#conclusion)
 
 
@@ -57,11 +50,12 @@ You should also install version 18.1 of the [University Program extensions](http
 If you have problems installing the software, please contact your TA during your lab session in the first week of class.
 =======
 
-You should also install the [University Program extensions](https://www.intel.com/content/www/us/en/programmable/support/training/university/materials-software.html?&ifup_version=18.1) for this version of Quartus.
+You should also install the [University Program extensions](https://www.intel.com/content/www/us/en/programmable/support/training/university/materials-software.html?&ifup_version=18.1). Install the latest version (at the point of writing that's 18.1, different from the Quartus version) and follow the installation wizard to install under Quartus 19.1.
+
+=======
+Install Cygwin by running [setup-x86_64.exe](https://cygwin.com/setup-x86_64.exe). Follow the installation wizard to install under C:\intelFPGA_lite\19.1\quartus\bin64\cygwin (or the corresponding installation path). Leave all other options as default.
 
 If you have problems installing the software, please contact your TA during the first week of class.
->>>>>>> 35bb739131b5a337c1b6535e74000f3ea7f27d7b
-
 
 ## Simulating using ModelSim
 
@@ -225,7 +219,6 @@ In case you have problems, here's a handy checklist for any Programmer-related p
 
 ## Post-synthesis simulation
 
-<<<<<<< HEAD
 The synthesis process converts your Verilog design, which is actually written in high-level Verilog, into a very basic low-level format.
 This low-level format will contain very basic logic gates and estimates for the time delays -- the precise format will depend upon the
 target technology. This output is called a post-synthesis netlist, and it can also be described by the Verilog language. As a result,
@@ -258,17 +251,6 @@ you will combine the testbench with the netlist (`adder.vo`) instead of your
 Verilog design (`adder.sv`). Compile the design as before.
 
 However, we cannot directly simulate the design like we did before: the netlist instantiates primitive FPGA modules like `cyclone_lcell_comb` and `cyclone_io_ibuf`, so the simulation will fail unless we tell ModelSim where to find these modules.
-=======
-Another output of the synthesis process is a description of your design in terms of the primitive elements available on the FPGA: logic array blocks (LABs), I/O buffers, and so on (if you were building an ASIC, the primitive elements would be ASIC library cells). This description is called a _netlist_, and in this case is just a Verilog file that instantiates and connects these primitive elements. You can find it in the `simulation/modelsim` folder, in our case `adder.vo`.
-
-In the ASIC flow, simulating the netlist is an important part of the process: nobody _really_ trusts the synthesis tools to be bug-free, and re-spinning a broken ASIC costs upward of a million dollars, so it makes sense to be careful. In a more complex design, the netlist would be annotated with detailed timing information, which allows for the design to be simulated in much more detail and more accurate power estimates to be made.
-
-In this offering of CPEN 311, some of you might not have a physical FPGA board available, and so might not be able to demonstrate the working circuit on the actual hardware. However, we still need to know that your design synthesizes into working hardware. We will therefore evaluate your design in part by (automatically) synthesizing it in Quartus and simulating the post-synthesis netlist — and you should do the same to ensure that you receive full marks.
-
-To simulate the netlist, you will follow the same steps to create a simulation project as in the [Simulating](#simulating-using-modelsim) section, except that you will combine the testbench with the netlist (`adder.vo`) instead of your Verilog design (`adder.sv`). Compile the design as before.
-
-However, we cannot directly simulate the design like we did before: the netlist instantiates primitive FPGA modules like `cyclone_lcell_comb` and `cyclone_io_ibuf`, so the simulation will fail unless we tell Modelsim where to find these modules.
->>>>>>> 35bb739131b5a337c1b6535e74000f3ea7f27d7b
 
 To do this, make sure you've compiled the design, and go to _Simulate&rarr;Start Simulation..._ and select the _Libraries_ tab. In the _Search Libraries (-L)_ box, add the `cyclonev_ver` library, which defines the FPGA primitive cells for your Cyclone V FPGA:
 
@@ -289,7 +271,6 @@ When you simulate, you can also see how the signals in the synthesized design ch
 In a more complicated design, you would see many more additional signals, and most of the internal variables in your SystemVerilog RTL would have been compiled away; only top-level module ports, like `SW` and `LEDR` here, will be preserved. This means that during post-synthesis simulation you cannot reach inside your module to examine or toggle the internal signals, so your post-synthesis testbench can only do “black-box” testing.
 
 
-<<<<<<< HEAD
 ### Using GitHub
 
 So far, you have probably been reading this assignment on GitHub.com with your
@@ -439,11 +420,6 @@ looks like.
 ## Conclusion
 
 That's it for the tutorial! Now you know how to simulate your RTL design in ModelSim, synthesize it using Quartus, program it on your FPGA, and simulate the post-synthesis netlist.
-=======
-## Conclusion
-
-That's it for the tutorial! Now you know how to simulate your RTL design in Modelsim, synthesize it using Quartus, program it on your FPGA, and simulate the post-synthesis netlist.
->>>>>>> 35bb739131b5a337c1b6535e74000f3ea7f27d7b
 
 Good luck with the rest of the course!
 
