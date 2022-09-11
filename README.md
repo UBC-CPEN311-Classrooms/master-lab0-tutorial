@@ -104,9 +104,13 @@ Quartus version 18.1, it may not have the other tools).
 
 There are many other installation combinations, but they may require more setup
 experience. For example, quite a few students run Linux (typically Ubuntu) or
-macOS (running a hypervisor with a guest OS of Windows or Linux).  
+macOS (running a hypervisor with a guest OS of Windows or Linux).  You might
+also want to try newer versions of the tools (under any OS).
 
-You might also want to try newer versions of the tools (under any OS).
+With any alternate installations, you may be relying on Piazza a bit more to
+help each other out.  For example, some TAs typically have some experience with
+Linux, but fewer have Mac experience.  
+
 Multiple versions of Quartus can easily co-exist on your computer (each version
 of Quartus is installed into its own directory tree).  However, when you create
 a specific project, it will be for that specific version of Quartus.  **Newer
@@ -119,20 +123,17 @@ and Quartus 19.1 with Linux needs WSL (Windows Subsystem for Linux).  Linux
 users will find that Quartus version 20.1 has an easier installation process,
 which is always tempting.
 
-Some TAs typically have some experience with Linux, but few have Mac
-experience.  You may be relying on Piazza a bit more to help each other out.  
-
-Next year, the course will be moving to Quartus Prime 21.1, Questa, and the
-Monitor Program 21.1. (I don't think you need Cygwin with this combination.)
-Quartus is a massively updated version of ModelSim which is much faster and
-still free, but it requires that you go online to get a license which is good
-for 1 year (renewable).  **Anyone using this new version combination is
-encouraged to share their experience on Piazza. The instructor and TAs would
-greatly appreciate a report at the end of the course of any problems you had,
-and any solutions you found. It would also be great if you keep a log
-throughout the term that you can share at the end. In particular, it would be
-great if you can update this README.md, push it, and tell the instructors
-to take a look.** 
+Next year, the course will probably be moving to Quartus Prime 21.1, Questa,
+and the Monitor Program 21.1. (I don't think you need Cygwin with this
+combination.) Quartus is a massively updated version of ModelSim which is much
+faster and still free, but it requires that you go online to get a license
+which is good for 1 year (renewable).  **Anyone using this new version
+combination is encouraged to share their experience on Piazza. The instructor
+and TAs would greatly appreciate a report at the end of the course of any
+problems you had, and any solutions you found. It would also be great if you
+keep a log throughout the term that you can share at the end. In particular, it
+would be great if you can update this README.md, push it, and tell the
+instructors to take a look.** 
 
 
 
