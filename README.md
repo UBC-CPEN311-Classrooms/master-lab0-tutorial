@@ -37,6 +37,9 @@ similar virtual machine environment.
 
 ### Recommended Installation
 
+The recommended installation below is for Windows. For other operating systems,
+please see [Alternate Installations](#alternate-installations).
+
 Quartus is a massive tool always under development. While Intel does an
 excellent job with quality control, each release is expected to have introduced
 some new bugs, fixed some old bugs, and even re-introduced previously fixed
@@ -53,7 +56,6 @@ you know**.  When they anticipate an upgrade is inevitable, they start by using
 a new version of the tools with an old (completed) project or a new
 (non-critical) project, and gradually add more projects until things are proven
 stable.
-
 
 In this course, it is recommended that you install [Quartus Prime
 Lite](https://www.intel.com/content/www/us/en/software-kit/664527/intel-quartus-prime-lite-edition-design-software-version-19-1-for-windows.html)
