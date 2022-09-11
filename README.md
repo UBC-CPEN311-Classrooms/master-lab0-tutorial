@@ -97,7 +97,7 @@ The MCLD 4006 lab computers will be set up by University IT with the versions
 mentioned above. You may find some other (older) versions available, but they
 are for older FPGA devices and/or other courses. Other lab rooms may also have
 Quartus installed, but it may not be set up exactly as above (even if it has
-Quartus version 18.1, it may not have ModelSim, Cygwin or the Monitor Program).
+Quartus version 18.1, it may not have the other tools).
 
 
 ### Alternate Installations
