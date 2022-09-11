@@ -31,30 +31,116 @@ We will be using another industry-standard tool, Intel Quartus Prime, to synthes
 
 ## Installing Quartus and ModelSim
 
-You can choose from either Windows or Linux versions of the software. If you have a Mac, you can run will either Windows or Linux inside VirtualBox or a similar virtual machine environment.
+You can choose from either Windows or Linux versions of the software. If you
+have a Mac, you can run will either Windows or Linux inside VirtualBox or a
+similar virtual machine environment.
 
-You should install [Quartus Prime Lite](https://fpgasoftware.intel.com/19.1/?edition=lite) (it's free). You will want version **19.1**. Make sure your download includes the ModelSim simulator and support for the Cyclone V FPGA device that is the heart of your DE1-SoC / DE0-CV board, and that that you select all of these during installation.
-<<<<<<< HEAD
-The easy thing is to download the full 6GB file -- you'll need about 14GB of disk space available because another 8GB or more is needed to unpack/install/decompress during the installation.
+### Recommended Installation
 
-If you need to save space, things get much more complicated. There is an "Individual Files" tab. Make sure that your download includes Quartus Prime (1.8GB), ModelSim (1GB) and support for the Cyclone V FPGA device (1.3GB). You don't need to compile for other FPGA devices. Note that the installation and setup of ModelSim might not go very smoothly using this method, so I strongly advise you to use the full install method if at all possible.
+Quartus is a massive tool always under development. While Intel does an
+excellent job with quality control, each release is expected to have introduced
+some new bugs, fixed some old bugs, and even re-introduced previously fixed
+bugs.
+
+In most workplace environments, companies will use one version of the tools and
+stick with it for the entire project.  Changing tools mid-project is almost
+unheard of, and can fester problems which remain hidden until it is far too
+late.  Usually this causes large delays in the schedule and introduces new
+problems which were not there previously, so verification often needs to double
+down.  Because of this, most companies keep using that same version for
+multiple projects, for as long as they can, in order to stick with the **devil
+you know**.  When they anticipate an upgrade is inevitable, they start by using
+a new version of the tools with an old (completed) project or a new
+(non-critical) project, and gradually add more projects until things are proven
+stable.
+
+
+In this course, it is recommended that you install [Quartus Prime
+Lite](https://www.intel.com/content/www/us/en/software-kit/664527/intel-quartus-prime-lite-edition-design-software-version-19-1-for-windows.html)
+(it's free). You will want version **19.1**, and it will require 6GB
+(compressed) to download, plus another 8GB or more because the installed
+version will be decompressed. When installing, you must install **ModelSim**,
+support for the **Cyclone V FPGA device**, and the **Nios II EDS**. You can
+skip most other features.
+
+To save space, you can choose to download the "Individual Files" tab, but it is
+more complex to install. You can separately download QuartusLite (1.5GB),
+ModelSim (1GB), and Cyclone V supoprt (1.3GB).  You don't need to compile for
+any other FPGA devices. Note that the installation and setup of ModelSim might
+not go very smoothly using this method, so I strongly advise you to use the
+full install method if possible.
 
 Optional: go to the "Additional Software" tab to download and install "Quartus
 Prime Help" and "Quartus Prime Programmer and Tools". The programmer is already
 built-in to Quartus, but this allows you to run the programmer as a stand-alone
 tool.
 
-You should also install version 18.1 of the [University Program extensions](https://www.intel.com/content/www/us/en/programmable/support/training/university/materials-software.html?&ifup_version=18.1). Ignore the warning of a version mismatch with Quartus Prime.
-(You do not need to download the Linux SD Card image.)
+You should also install version 18.1 of the [Monitor Program](https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/18.1/intel_fpga_upds_setup.exe)
+You can ignore any warning of a version mismatch with Quartus Prime.
 
-If you have problems installing the software, please contact your TA during your lab session in the first week of class.
-=======
+**Always try to use the default pathnames for installation. In particular, any
+pathnames which contain a space or non-ASCII characters will probably cause you
+problems later. You have been warned.**
 
-You should also install the [University Program extensions](https://www.intel.com/content/www/us/en/programmable/support/training/university/materials-software.html?&ifup_version=18.1). Install the latest version (at the point of writing that's 18.1, different from the Quartus version) and follow the installation wizard to install under Quartus 19.1.
+Finally, you need to install Cygwin by running
+[setup-x86_64.exe](https://cygwin.com/setup-x86_64.exe).
+Follow the installation wizard to install under
+C:\intelFPGA_lite\19.1\quartus\bin64\cygwin
+(or the corresponding installation path). Leave all other options as default.
 
-Install Cygwin by running [setup-x86_64.exe](https://cygwin.com/setup-x86_64.exe). Follow the installation wizard to install under C:\intelFPGA_lite\19.1\quartus\bin64\cygwin (or the corresponding installation path). Leave all other options as default.
+If you have problems installing the software, please contact your TA during
+your lab session in the first week of class.
 
-If you have problems installing the software, please contact your TA during the first week of class.
+The MCLD 4006 lab computers will be set up by University IT with the versions
+mentioned above. You may find some other (older) versions available, but they
+are for older FPGA devices and/or other courses. Other lab rooms may also have
+Quartus installed, but it may not be set up exactly as above (even if it has
+Quartus version 18.1, it may not have ModelSim, Cygwin or the Monitor Program).
+
+
+### Alternate Installations
+
+There are many other installation combinations, but they may require more setup
+experience. For example, quite a few students run Linux (typically Ubuntu) or
+macOS (running a hypervisor with a guest OS of Windows or Linux).  
+
+If you're feeling lucky, you may want to try using a newer version.  In fact,
+multiple versions of Quartus can easily co-exist on your computer (each version
+of Quartus is installed into its own directory tree).  However, when you create
+a specific project, it will be for that specific version of Quartus.  **Newer
+versions of Quartus can open a project created using an older version, but it
+will update the configuration files which might make it difficult to go back to
+an older version of Quartus.**
+
+Mac and Linux users often have problems getting the USB Blaster set up to work,
+and Quartus 19.1 with Linux needs WSL (Windows Subsystem for Linux).  Linux
+users will find that Quartus version 20.1 has an easier installation process,
+which is always tempting.
+
+Some TAs typically have some experience with Linux, but few have Mac
+experience.  You may be relying on Piazza a bit more to help each other out.  
+
+Next year, the course will be moving to Quartus Prime 21.1, Questa, and the
+Monitor Program 21.1. (I don't think you need Cygwin with this combination.)
+Quartus is a massively updated version of ModelSim which is much faster and
+still free, but it requires that you go online to get a license which is good
+for 1 year (renewable).  **Anyone using this new version combination is
+encouraged to share their experience on Piazza. The instructor and TAs would
+greatly appreciate a report at the end of the course of any problems you had,
+and any solutions you found. It would also be great if you keep a log
+throughout the term that you can share at the end. In particular, it would be
+great if you can update this README.md, push it, and tell the instructors
+to take a look.** 
+
+
+
+## Digital Logic Review
+
+If you want to review digital logic and Verilog from CPEN211, you can try the
+[FPGAcademy tutorials](https://fpgacademy.org/tutorials.html).
+There is also a ModelSim tutorial there, but we'll also provide a brief introduction below.
+
+
 
 ## Simulating using ModelSim
 
@@ -343,17 +429,9 @@ what is in the cloud to see what the TAs will see by doing a new clone
 operation into a new folder.
 
 Note that github.com is just a cloud hosting site for a git repository. GitHub
-is not git. git is a protocol used by many different software tools for
+is not git. Git is a protocol used by many different software tools for
 organizing and managing code changes; GitHub is one of several different cloud
 hosting sites that use the git protocol. Others include BitBucket, GitLab, etc.
-
-We are using a feature of GitHub, called GitHub Classroom, that simplifies
-management for instructors. It primarily allows us to set up a master
-repository and create a link that simplifies the creation of a student-owned
-clone repository in the cloud. The student-owned repositories are set to be
-private, but it adds the TAs and myself as collaborators so we can see your
-code and also push changes to it (notably the autograding results; we won't
-ever actually change your source code on you).
 
 There are many excellent tutorials on how to use git that you can follow. We
 will not be covering this directly in class. We are assuming that you have used
@@ -363,9 +441,10 @@ GitHub Classroom:
 
 https://github.com/jfiksel/github-classroom-for-students
 
-Here is a good overview of the process of using a cloud and local repository.
-Unfortunately it is written to use BitBucket instead of GitHub. The concepts
-are exactly the same; some of the precise steps would be different.
+Here is a **really good** overview of the process of using a cloud and local
+repository.  Unfortunately it is written to use BitBucket instead of GitHub.
+The concepts are exactly the same; some of the precise steps would be
+different.
 
 https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
 
@@ -396,10 +475,10 @@ responding to that feedback. You can also push new commits, and these are
 automatically folded in to the pull request to show improvements.
 
 
-## GitHub submission and autograding
+## GitHub submission and (auto)grading
 
 The last part of this tutorial is to make sure that you can push your modified
-Verilog to the GitHub repository in preparation for autograding.
+Verilog to the GitHub repository in preparation for grading and/or autograding.
 
 In the folder `lab0`, you will find a short Verilog file `lab0.sv`. Edit this
 file, uncomment the code describing the active-low synchronous reset.  Simulate
@@ -407,18 +486,20 @@ the design in ModelSim -- did you find any errors? If so, correct them. Be
 careful not to modify the module name or any of the I/O signal names, or
 add/remove any I/O signals.
 
-Finally, push your modified `lab0.sv` file back to GitHub before the lab
-deadline. You do not need to push any other files.
+Finally, push your modified `lab0.sv` file back to GitHub before the end of
+your lab session.  You do not need to push any other files.
 
-At some point after the deadline, the TA will run the autograder and verify
-whether you modified the file correctly. When complete, the TA will push the
-autograder report back into your GitHub repository, and you can see what it
-looks like.
+At some point, a TA may ask you to show that you have correctly pushed your
+files.  A TA may also attempt to run the autograder to verify whether this has
+been done correctly; in that case, the will push the autograder report back
+into your GitHub repository, and you can see what it looks like.
 
 
 ## Conclusion
 
-That's it for the tutorial! Now you know how to simulate your RTL design in ModelSim, synthesize it using Quartus, program it on your FPGA, and simulate the post-synthesis netlist.
+That's it for the tutorial! Now you know how to simulate your RTL design in
+ModelSim, synthesize it using Quartus, program it on your FPGA, and simulate
+the post-synthesis netlist.
 
 Good luck with the rest of the course!
 
@@ -428,4 +509,5 @@ Good luck with the rest of the course!
 1.2: 2017-12-30: Mieszko Lis: GitHub release
 1.3: 2020-05-06: Mieszko Lis: Pandemic edition: netlist simulation instructions
 1.4: 2020-09-13: Guy Lemieux: GitHub submission to test autograder
+1.5: 2020-09-13: Guy Lemieux: update tool version info, demote autograder
 -->
