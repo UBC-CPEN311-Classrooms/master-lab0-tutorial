@@ -88,7 +88,7 @@ Finally, you need to install Cygwin by running
 [setup-x86_64.exe](https://cygwin.com/setup-x86_64.exe).
 Follow the installation wizard to install under
 C:\intelFPGA_lite\19.1\quartus\bin64\cygwin
-(or the corresponding installation path). Leave all other options as default.
+(or the corresponding installation path you used for Quartus). Leave all other options as default.
 
 If you have problems installing the software, please contact your TA during
 your lab session in the first week of class.
