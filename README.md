@@ -106,8 +106,8 @@ There are many other installation combinations, but they may require more setup
 experience. For example, quite a few students run Linux (typically Ubuntu) or
 macOS (running a hypervisor with a guest OS of Windows or Linux).  
 
-If you're feeling lucky, you may want to try using a newer version.  In fact,
-multiple versions of Quartus can easily co-exist on your computer (each version
+You might also want to try newer versions of the tools (under any OS).
+Multiple versions of Quartus can easily co-exist on your computer (each version
 of Quartus is installed into its own directory tree).  However, when you create
 a specific project, it will be for that specific version of Quartus.  **Newer
 versions of Quartus can open a project created using an older version, but it
