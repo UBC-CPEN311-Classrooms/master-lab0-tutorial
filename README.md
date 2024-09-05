@@ -57,9 +57,16 @@ a new version of the tools with an old (completed) project or a new
 (non-critical) project, and gradually add more projects until things are proven
 stable.
 
-In this course, it is recommended that you install [Quartus Prime
-Lite](https://www.intel.com/content/www/us/en/software-kit/664527/intel-quartus-prime-lite-edition-design-software-version-19-1-for-windows.html)
-(it's free). You will want version **19.1**, and it will require 6GB
+In this course, you will be using Quartus Prime Lite. You have a choice of which version to use:
+
+- [Version 18.1](https://www.intel.com/content/www/us/en/software-kit/665990/intel-quartus-prime-lite-edition-design-software-version-18-1-for-windows.html) is installed in the MCLD4006 lab; it should be easy to set up under Linux; most of the course material was prepared using v18.1
+- [Version 19.1](https://www.intel.com/content/www/us/en/software-kit/664527/intel-quartus-prime-lite-edition-design-software-version-19-1-for-windows.html) is the version used by the course when the labs were autograded using ModelSim; this version can be difficult to set up under Linux
+- [Version 21.1.1](https://www.intel.com/content/www/us/en/software-kit/736572/intel-quartus-prime-lite-edition-design-software-version-21-1-1-for-windows.html) is the latest version supported by Intel's University Program tools, and uses Questa instead of ModelSim for simulation
+- [Latest version](https://www.intel.com/content/www/us/en/software-kit/current/661455.html) we always like daredeviles, so maybe give it a spin and report back your experiences!
+
+If all of this is confusing, you should probably start with 18.1 and move up to a higher version only if you have problems.
+
+If you choose version **19.1**, for example, it will require 6GB
 (compressed) to download, plus another 8GB or more because the installed
 version will be decompressed. When installing, you must install **ModelSim**,
 support for the **Cyclone V FPGA device**, and the **Nios II EDS**. You can
@@ -69,35 +76,34 @@ To save space, you can choose to download the "Individual Files" tab, but it is
 more complex to install. You can separately download QuartusLite (1.5GB),
 ModelSim (1GB), and Cyclone V supoprt (1.3GB).  You don't need to compile for
 any other FPGA devices. Note that the installation and setup of ModelSim might
-not go very smoothly using this method, so I strongly advise you to use the
-full install method if possible.
+not go very smoothly using this method. We strongly advise you to use the
+full install method instead.
 
 Optional: go to the "Additional Software" tab to download and install "Quartus
 Prime Help" and "Quartus Prime Programmer and Tools". The programmer is already
 built-in to Quartus, but this allows you to run the programmer as a stand-alone
 tool.
 
-You should also install version 18.1 of the [Monitor Program](https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/18.1/intel_fpga_upds_setup.exe)
-You can ignore any warning of a version mismatch with Quartus Prime.
+In some labs, you may want to install the Intel Monitor Program [18.1 for Windows](https://fpgacademy.org/Downloads/18.1/intel_fpga_upds_setup.exe) or [18.1 for Linux](https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/18.1/intel_fpga_upds_setup.tar) for use
+with Quartus 18.1 or 19.1. When installing along side Quartus Prime 19.1, you can ignore any warning of a version mismatch. If you are using Quartus 21.1.1, only [21.1 for Windows](https://fpgacademy.org/Downloads/21.1/intel_fpga_upds_setup.exe) is available.
+
 
 **Always try to use the default pathnames for installation. In particular, any
 pathnames which contain a space or non-ASCII characters will probably cause you
 problems later. You have been warned.**
 
-Finally, you need to install Cygwin by running
+Finally, with version 19.1, you need to install Cygwin by running
 [setup-x86_64.exe](https://cygwin.com/setup-x86_64.exe).
 Follow the installation wizard to install under
 C:\intelFPGA_lite\19.1\quartus\bin64\cygwin
-(or the corresponding installation path you used for Quartus). Leave all other options as default.
+(or the corresponding installation path you used for Quartus). Leave all other options as default. (It's not clear whether you will need this with version 18.1 or 21.1.1 -- please let us know so we can update our documentation.)
 
 If you have problems installing the software, please contact your TA during
 your lab session in the first week of class.
 
-The MCLD 4006 lab computers will be set up by University IT with the versions
+The MCLD 4006 lab computers will be set up by University IT with one of the versions
 mentioned above. You may find some other (older) versions available, but they
-are for older FPGA devices and/or other courses. Other lab rooms may also have
-Quartus installed, but it may not be set up exactly as above (even if it has
-Quartus version 18.1, it may not have the other tools).
+are for older FPGA devices and/or other courses. Other lab rooms may also have the right Quartus version, but it may not be set up as required for the course (eg, it may not have the other tools like ModelSim or the Monitor Program).
 
 
 ### Alternate Installations
@@ -119,14 +125,12 @@ will update the configuration files which might make it difficult to go back to
 an older version of Quartus.**
 
 Mac and Linux users often have problems getting the USB Blaster set up to work,
-and Quartus 19.1 with Linux needs WSL (Windows Subsystem for Linux).  Linux
-users will find that Quartus version 20.1 has an easier installation process,
-which is always tempting.
+and Quartus 19.1 with Linux needs WSL (Windows Subsystem for Linux).
 
-Next year, the course will probably be moving to Quartus Prime 21.1, Questa,
+In the future, the course will probably fully move to Quartus Prime 21.1.1, Questa,
 and the Monitor Program 21.1. (I don't think you need Cygwin with this
-combination.) Quartus is a massively updated version of ModelSim which is much
-faster and still free, but it requires that you go online to get a license
+combination.) Questa is a 64-bit version of ModelSim which is much
+faster, massively updated, and still free, but it requires that you go online to get a license
 which is good for 1 year (renewable).  **Anyone using this new version
 combination is encouraged to share their experience on Piazza. The instructor
 and TAs would greatly appreciate a report at the end of the course of any
